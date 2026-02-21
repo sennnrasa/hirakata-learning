@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEKAI NO KURABU</title>
+    <link rel="stylesheet" href="mm.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <!-- Logo dari file JPEG Anda -->
+            <img src="loh.jpeg" alt="Logo" class="logo-img">
+            <h1>SEKAI NO KURABU</h1>
+        </div>
+    </header>
+
+    <nav class="slide-nav">
+        <button class="nav-btn active" onclick="showSlide(1)">1</button>
+        <button class="nav-btn" onclick="showSlide(2)">2</button>
+        <button class="nav-btn" onclick="showSlide(3)">3</button>
+        <button class="nav-btn" onclick="showSlide(4)">4</button>
+        <button class="nav-btn" onclick="showSlide(5)">5</button>
+        <button class="nav-btn" onclick="showSlide(6)">6</button>
+        <button class="nav-btn" onclick="showSlide(7)">7</button>
+    </nav>
+
+    <main>
+        <!-- Slide 1: Chart Hiragana -->
+        <section id="slide1" class="slide-content active">
+            <h2>Chart Hiragana</h2>
+            <div class="chart-container">
+                <h3>Dasar (On)</h3>
+                <div class="char-grid" id="hira-on"></div>
+                <h3>Dakuon</h3>
+                <div class="char-grid" id="hira-dakuon"></div>
+                <h3>Handakuon</h3>
+                <div class="char-grid" id="hira-handakuon"></div>
+                <h3>Youon</h3>
+                <div class="char-grid" id="hira-youon"></div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Chart Katakana -->
+        <section id="slide2" class="slide-content">
+            <h2>Chart Katakana</h2>
+            <div class="chart-container">
+                <h3>Dasar (On)</h3>
+                <div class="char-grid" id="kata-on"></div>
+                <h3>Dakuon</h3>
+                <div class="char-grid" id="kata-dakuon"></div>
+                <h3>Handakuon</h3>
+                <div class="char-grid" id="kata-handakuon"></div>
+                <h3>Youon</h3>
+                <div class="char-grid" id="kata-youon"></div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Flashcard Hiragana -->
+        <section id="slide3" class="slide-content">
+            <h2>Flashcard Hiragana</h2>
+            <div class="fc-wrapper">
+                <div class="flashcard" onclick="toggleFlip(this)">
+                    <div class="fc-front" id="fc-hira-front">あ</div>
+                    <div class="fc-back" id="fc-hira-back">a</div>
+                </div>
+            </div>
+            <div class="fc-controls">
+                <button onclick="prevCard('hira')"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="speakChar('hira')"><i class="fas fa-volume-up"></i></button>
+                <button onclick="shuffleCard('hira')"><i class="fas fa-random"></i></button>
+                <button onclick="nextCard('hira')"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Slide 4: Flashcard Katakana -->
+        <section id="slide4" class="slide-content">
+            <h2>Flashcard Katakana</h2>
+            <div class="fc-wrapper">
+                <div class="flashcard" onclick="toggleFlip(this)">
+                    <div class="fc-front" id="fc-kata-front">ア</div>
+                    <div class="fc-back" id="fc-kata-back">a</div>
+                </div>
+            </div>
+            <div class="fc-controls">
+                <button onclick="prevCard('kata')"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="speakChar('kata')"><i class="fas fa-volume-up"></i></button>
+                <button onclick="shuffleCard('kata')"><i class="fas fa-random"></i></button>
+                <button onclick="nextCard('kata')"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Slide 5: Trace Hiragana -->
+        <section id="slide5" class="slide-content">
+            <h2>Trace Hiragana</h2>
+            <div class="trace-area">
+                <div class="trace-guide" id="guide-hira">あ</div>
+                <canvas id="canvas-hira" width="280" height="280"></canvas>
+            </div>
+            <div class="trace-controls">
+                <select id="select-trace-hira" onchange="changeTraceChar('hira')"></select>
+                <button onclick="clearCanvas('hira')" class="btn-reset">Hapus</button>
+            </div>
+        </section>
+
+        <!-- Slide 6: Trace Katakana -->
+        <section id="slide6" class="slide-content">
+            <h2>Trace Katakana</h2>
+            <div class="trace-area">
+                <div class="trace-guide" id="guide-kata">ア</div>
+                <canvas id="canvas-kata" width="280" height="280"></canvas>
+            </div>
+            <div class="trace-controls">
+                <select id="select-trace-kata" onchange="changeTraceChar('kata')"></select>
+                <button onclick="clearCanvas('kata')" class="btn-reset">Hapus</button>
+            </div>
+        </section>
+
+        <!-- Slide 7: Quiz -->
+        <section id="slide7" class="slide-content">
+            <h2>Mini Quiz</h2>
+            <div class="quiz-box">
+                <div class="question-text" id="quiz-word">Loading...</div>
+                <div class="options" id="quiz-options"></div>
+                <div class="feedback" id="quiz-feedback"></div>
+                <button onclick="generateQuiz()" class="btn-next-q">Soal Berikutnya</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="mm.js"></script>
+</body>
+</html>
